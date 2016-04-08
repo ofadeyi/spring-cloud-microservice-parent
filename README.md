@@ -1,6 +1,6 @@
 # Spring Cloud Microservice Parent
 
-This repository contains the microservices to control the Room features like Lights, HVAC or TV.
+This project aims to contain all the basic dependencies for any Spring based microservice
 
 ## Table of Contents
 * **[Libraries included](#libraries-included)**  
