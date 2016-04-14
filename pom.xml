@@ -6,13 +6,13 @@
 
     <groupId>uk.co.whitbread</groupId>
     <artifactId>spring-cloud-microservice-parent</artifactId>
-    <version>1.0</version>
+    <version>1.1</version>
     <packaging>pom</packaging>
 
     <parent>
         <groupId>org.springframework.cloud</groupId>
         <artifactId>spring-cloud-starter-parent</artifactId>
-        <version>Brixton.M5</version>
+        <version>Brixton.RC1</version>
         <relativePath/>
     </parent>
 
