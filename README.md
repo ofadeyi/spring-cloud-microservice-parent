@@ -31,5 +31,5 @@ Add the following as the parent of the project:
 >     <parent>
 >        <groupId>uk.co.whitbread</groupId>
 >        <artifactId>spring-cloud-microservice-parent</artifactId>
->        <version>1.0</version>
+>        <version>1.1</version>
 >     </parent>
