@@ -104,7 +104,7 @@
                             <goal>wget</goal>
                         </goals>
                         <configuration>
-                            <url>https://s3-eu-west-1.amazonaws.com/roomcontrol/entrypoint.sh</url>
+                            <url>https://s3-eu-west-1.amazonaws.com/wbroomcontrol/entrypoint.sh</url>
                             <outputDirectory>${project.build.directory}/docker</outputDirectory>
                         </configuration>
                     </execution>
