@@ -12,7 +12,7 @@
     <parent>
         <groupId>org.springframework.cloud</groupId>
         <artifactId>spring-cloud-starter-parent</artifactId>
-        <version>Brixton.RELEASE</version>
+        <version>Camden.RELEASE</version>
         <relativePath/>
     </parent>
 
@@ -126,7 +126,7 @@
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-log4j</artifactId>
+            <artifactId>spring-boot-starter-log4j2</artifactId>
         </dependency>
         <dependency>
             <groupId>org.springframework.cloud</groupId>
