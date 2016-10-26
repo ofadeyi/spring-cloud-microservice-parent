@@ -9,9 +9,9 @@ This project aims to contain all the basic dependencies for any Spring based mic
 
 ## Libraries included
 
-- Spring Boot
-- Spring Cloud
-- Springfox's Swagger 2
+- Spring Boot 1.4.1
+- Spring Cloud Camden.RELEASE
+- Springfox's Swagger 2.6.0
 - Zuul
 - Eureka
 - Jacoco
@@ -33,3 +33,9 @@ Add the following as the parent of the project:
 >        <artifactId>spring-cloud-microservice-parent</artifactId>
 >        <version>1.1</version>
 >     </parent>
+
+## Release Notes
+
+- Upgraded version to Spring Cloud Camden.RELEASE that includes the new Spring boot 1.4.1 with testing enhancements
+- Upgrared version of Swagger to 2.6.0 to solve model generation issues
+- Migrated container repository to docker hub. The new parent starts using new organisation name `Whitbreaddigital`
