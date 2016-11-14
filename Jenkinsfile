@@ -2,7 +2,7 @@
 
 node('maven') {
     // Mark the code checkout 'stage'....
-    stage 'Checkout' {
+    stage('Checkout') {
 
         // Checkout code from repository
         checkout scm
@@ -15,7 +15,7 @@ node('maven') {
     env.PATH = "${mvnHome}/bin:${env.PATH}"
 
     // Mark the code build 'stage'....
-    stage 'Package and Deploy' {
+    stage('Package and Deploy') {
         configFileProvider([configFile(fileId: 'maven-settings', variable: 'MAVEN_SETTINGS')]) {
             sh "mvn -s $MAVEN_SETTINGS clean deploy"
         }
