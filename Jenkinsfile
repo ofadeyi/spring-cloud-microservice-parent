@@ -11,16 +11,21 @@ node('maven') {
         // Get the maven tool.
         mvnHome = tool 'M3'
 
+        // Add MVN to the path
+        env.PATH = "${mvnHome}/bin:${env.PATH}"
     }
 
     // Mark the code build 'stage'....
-    stage('Package and Deploy') {
-        // Add MVN to the path
-        env.PATH = "${mvnHome}/bin:${env.PATH}"
+    stage('Build') {
+        sh "mvn -s $MAVEN_SETTINGS clean install"
+    }
+
+    // Mark the code deploy 'stage'....
+    stage('Deploy to Nexus') {
 
         // Retrieve the global settings.xml
         configFileProvider([configFile(fileId: 'wb-mvn-settings', variable: 'MAVEN_SETTINGS')]) {
-            sh "mvn -s $MAVEN_SETTINGS clean deploy"
+            sh "mvn -s $MAVEN_SETTINGS deploy"
         }
     }
 }
