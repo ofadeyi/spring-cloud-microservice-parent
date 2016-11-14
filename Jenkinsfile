@@ -13,9 +13,9 @@ node('maven') {
     // Add MVN to the path
     env.PATH = "${mvnHome}/bin:${env.PATH}"
 
-    // Mark the code build 'stage'....
-    stage 'Package and Deploy'
     configFileProvider([configFile(fileId: 'maven-settings', variable: 'MAVEN_SETTINGS')]) {
+        // Mark the code build 'stage'....
+        stage 'Package and Deploy'
         sh "mvn -s $MAVEN_SETTINGS clean deploy"
     }
 }
