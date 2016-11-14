@@ -10,7 +10,12 @@ node('maven') {
     // Get the maven tool.
     def mvnHome = tool 'M3'
 
+    // Add MVN to the path
+    env.PATH = "${mvnHome}/bin:${env.PATH}"
+
     // Mark the code build 'stage'....
     stage 'Package and Deploy'
-    sh "${mvnHome}/bin/mvn clean deploy"
+    configFileProvider([configFile(fileId: 'maven-settings', variable: 'MAVEN_SETTINGS')]) {
+        sh "mvn -s $MAVEN_SETTINGS clean deploy"
+    }
 }
