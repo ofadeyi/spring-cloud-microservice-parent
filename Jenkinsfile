@@ -17,7 +17,7 @@ node('maven') {
 
     // Mark the code build 'stage'....
     stage('Build') {
-        sh "mvn -s $MAVEN_SETTINGS clean install"
+        sh "mvn clean install"
     }
 
     // Mark the code deploy 'stage'....
