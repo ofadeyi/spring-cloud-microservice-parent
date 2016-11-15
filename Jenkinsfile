@@ -23,16 +23,15 @@ node('maven') {
 
     // Mark the code build 'stage'....
     stage('Build') {
-        sh "cat $mvnSettings"
         sh "mvn clean install"
     }
 
-//    // Mark the code deploy 'stage'....
-//    stage('Deploy to Nexus') {
-//
-//        // Retrieve the global settings.xml
-//        configFileProvider([configFile(fileId: 'wb-mvn-settings', variable: 'MAVEN_SETTINGS')]) {
-//            sh "mvn -s $MAVEN_SETTINGS deploy"
-//        }
-//    }
+    // Mark the code deploy 'stage'....
+    stage('Deploy to Nexus') {
+
+        // Retrieve the global settings.xml
+        configFileProvider([configFile(fileId: 'wb-mvn-settings', variable: 'MAVEN_SETTINGS')]) {
+            sh "mvn -s $MAVEN_SETTINGS deploy"
+        }
+    }
 }
