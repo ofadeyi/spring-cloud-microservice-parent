@@ -26,7 +26,8 @@ node('maven') {
 
         // Retrieve the global settings.xml
         configFileProvider([configFile(fileId: 'wb-mvn-settings', variable: 'MAVEN_SETTINGS')]) {
-            sh "mvn -s $MAVEN_SETTINGS deploy"
+//            sh "mvn -s $MAVEN_SETTINGS deploy"
+            sh "cat $MAVEN_SETTINGS"
         }
     }
 }
