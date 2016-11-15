@@ -3,6 +3,8 @@
 node('maven') {
 
     def mvnHome
+    def mvnSettings
+
     // Mark the code checkout 'stage'....
     stage('Preparation') {
         // Checkout code from repository
@@ -13,11 +15,15 @@ node('maven') {
 
         // Add MVN to the path
         env.PATH = "${mvnHome}/bin:${env.PATH}"
+
+        configFileProvider([configFile(fileId: 'wb-mvn-settings', variable: 'MAVEN_SETTINGS')]) {
+            mvnSettings = MAVEN_SETTINGS
+        }
     }
 
     // Mark the code build 'stage'....
     stage('Build') {
-        sh "mvn clean install"
+        sh "mvn -s $mvnSettings clean install"
     }
 
 //    // Mark the code deploy 'stage'....
