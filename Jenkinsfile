@@ -3,7 +3,6 @@
 node('maven') {
 
     def mvnHome
-    def mvnSettings
 
     // Mark the code checkout 'stage'....
     stage('Preparation') {
@@ -15,10 +14,6 @@ node('maven') {
 
         // Add MVN to the path
         env.PATH = "${mvnHome}/bin:${env.PATH}"
-
-        configFileProvider([configFile(fileId: 'wb-mvn-settings', variable: 'MAVEN_SETTINGS')]) {
-            mvnSettings = MAVEN_SETTINGS
-        }
     }
 
     // Mark the code build 'stage'....
