@@ -24,7 +24,7 @@ node('maven') {
 
     // Mark the code build 'stage'....
     stage('Build') {
-        sh "cat $mvnSettings"
+//        sh "cat $mvnSettings"
         sh "mvn -s $mvnSettings clean install"
     }
 
