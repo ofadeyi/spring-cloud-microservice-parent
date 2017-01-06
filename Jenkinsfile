@@ -24,7 +24,6 @@ node('maven') {
 
         // Read the POM file and extract the versionNumber
         pom = readMavenPom file: 'pom.xml'
-//        version = branchName.contains('release') ? pom.version :  pom.version.replace("-SNAPSHOT", ".${currentBuild.number}")
         version = branchName.contains('release') ? pom.version : "${pom.version}.${currentBuild.number}"
 
         // Set the artefact version
