@@ -27,6 +27,7 @@
         <jacoco.version>0.7.1.201405082137</jacoco.version>
         <sonar.dynamicAnalysis>reuseReports</sonar.dynamicAnalysis>
         <sonar.jacoco.reportPath>${project.basedir}/../target/jacoco.exec</sonar.jacoco.reportPath>
+        <versions-maven.version>2.3</versions-maven.version>
     </properties>
 
     <repositories>
@@ -60,6 +61,11 @@
 
     <build>
         <plugins>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>versions-maven-plugin</artifactId>
+                <version>${versions-maven.version}</version>
+            </plugin>
             <plugin>
                 <groupId>org.jacoco</groupId>
                 <artifactId>jacoco-maven-plugin</artifactId>
