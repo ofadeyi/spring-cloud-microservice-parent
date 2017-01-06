@@ -30,7 +30,7 @@ node('maven') {
         // Set the artefact version
         sh "mvn versions:set -DnewVersion=${version}"
 
-        println "The artifact version will be: $version"
+        println "The artefact version will be: $version"
     }
 
     // Mark the code build 'stage'....
