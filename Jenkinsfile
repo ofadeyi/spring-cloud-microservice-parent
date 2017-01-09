@@ -32,14 +32,6 @@ node('maven') {
         println "The artefact version will be: $version"
     }
 
-    stage('Deploy image to DockerHub') {
-        withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId: 'docker-hub',
-                          usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD']]) {
-
-            sh "echo uname=$USERNAME pwd='${PASSWORD}'"
-        }
-    }
-
     // Mark the code build 'stage'....
     stage('Build') {
         // Retrieve the global settings.xml
