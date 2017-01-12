@@ -35,7 +35,8 @@ node('maven') {
         // Retrieve the global settings.xml
         configFileProvider([configFile(fileId: 'wb-mvn-settings', variable: 'MAVEN_SETTINGS')]) {
           // Set the artefact version
-          sh "mvn version:set -DnewVersion=${version}"
+          sh "mvn versions:set -DnewVersion=${version}"
+          
           sh "mvn -s $MAVEN_SETTINGS clean install"
         }
     }
