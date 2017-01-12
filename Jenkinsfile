@@ -6,6 +6,7 @@ node('maven') {
     def pom
     def version
     def branchName
+    def releaseBranch = "master"
 
     // Mark the code checkout 'stage'....
     stage('Preparation') {
@@ -22,10 +23,10 @@ node('maven') {
         sh 'git branch -a --contains $(git rev-parse --short HEAD) --merged > branchName'
         branchName = readFile('branchName').trim()
         println "Releasing from branch: $branchName"
-        
+
         // Read the POM file and extract the versionNumber
         pom = readMavenPom file: 'pom.xml'
-        version = branchName.contains('release') ? pom.version : "${pom.version}.${currentBuild.number}"
+        version = branchName.contains(releaseBranch) ? pom.version : "${pom.version}.${currentBuild.number}"
 
         // Set the artefact version
         sh "mvn versions:set -DnewVersion=${version}"
