@@ -27,17 +27,16 @@ node('maven') {
         // Read the POM file and extract the versionNumber
         pom = readMavenPom file: 'pom.xml'
         version = branchName.contains(releaseBranch) ? pom.version : "${pom.version}.${currentBuild.number}"
-
-        // Set the artefact version
         println "The artefact version will be: $version"
-        sh "mvn versions:set -DnewVersion=${version}"
     }
 
     // Mark the code build 'stage'....
     stage('Build') {
         // Retrieve the global settings.xml
         configFileProvider([configFile(fileId: 'wb-mvn-settings', variable: 'MAVEN_SETTINGS')]) {
-            sh "mvn -s $MAVEN_SETTINGS clean install"
+          // Set the artefact version
+          sh "mvn version:set -DnewVersion=${version}"
+          sh "mvn -s $MAVEN_SETTINGS clean install"
         }
     }
 
