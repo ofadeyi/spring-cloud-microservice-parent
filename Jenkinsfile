@@ -29,9 +29,8 @@ node('maven') {
         version = branchName.contains(releaseBranch) ? pom.version : "${pom.version}.${currentBuild.number}"
 
         // Set the artefact version
-        sh "mvn versions:set -DnewVersion=${version}"
-
         println "The artefact version will be: $version"
+        sh "mvn versions:set -DnewVersion=${version}"
     }
 
     // Mark the code build 'stage'....
